@@ -94,7 +94,7 @@ def temperatureHandler(evt) {
     if (currentTemp < setLow) {
     	if (state.lastStatus != "${cold}") {
             log.info "Setting thermostat mode to ${cold}"
-        	def msg = "I changed your thermostat mode to ${cold}"
+        	def msg = "Thermostat mode set to Heat"
 			thermostat."${cold}"()
         	if (state.lastStatus != "${cold}"){
         		if ( sendPushMessage != "No" ) {
@@ -108,7 +108,7 @@ def temperatureHandler(evt) {
     if (currentTemp > setHigh) {
        	if (state.lastStatus != "${hot}") {
     		log.info "Setting thermostat mode to ${hot}"
-        	def msg = "I changed your thermostat mode to ${hot}"
+        	def msg = "Thermostat mode set to Cool"
 			thermostat."${hot}"()
         	if (state.lastStatus != "${hot}"){
         		if ( sendPushMessage != "No" ) {
@@ -122,7 +122,7 @@ def temperatureHandler(evt) {
      else if (currentTemp > setLow && currentTemp < setHigh) {
         if (state.lastStatus != "${neutral}"){
     		log.info "Setting thermostat mode to ${neutral}"
-        	def msg = "I changed your thermostat mode to ${neutral}"
+        	def msg = "Thermostat mode set to Auto"
 			thermostat."${neutral}"()
         	if (state.lastStatus != "${neutral}"){
         		if ( sendPushMessage != "No" ) {
